@@ -1,26 +1,24 @@
 package com.shnupbups.simpleteleporters;
 
-import net.minecraft.util.Identifier;
-
-import net.fabricmc.api.ModInitializer;
-
-import com.shnupbups.simpleteleporters.init.SimpleTeleportersBlockEntities;
+import com.google.common.reflect.Reflection;
 import com.shnupbups.simpleteleporters.init.SimpleTeleportersBlocks;
 import com.shnupbups.simpleteleporters.init.SimpleTeleportersItems;
 import com.shnupbups.simpleteleporters.init.SimpleTeleportersSoundEvents;
+import net.fabricmc.api.ModInitializer;
+import net.minecraft.util.Identifier;
+import org.jetbrains.annotations.NotNull;
 
 public class SimpleTeleporters implements ModInitializer {
 	public static final String MOD_ID = "simpleteleporters";
 
-	public static Identifier id(String path) {
-		return new Identifier(MOD_ID, path);
-	}
-
 	@Override
 	public void onInitialize() {
-		SimpleTeleportersBlocks.init();
-		SimpleTeleportersItems.init();
-		SimpleTeleportersBlockEntities.init();
-		SimpleTeleportersSoundEvents.init();
+		Reflection.initialize(SimpleTeleportersBlocks.class);
+		Reflection.initialize(SimpleTeleportersItems.class);
+		Reflection.initialize(SimpleTeleportersSoundEvents.class);
+	}
+
+	public static @NotNull Identifier id(@NotNull String path) {
+		return Identifier.of(MOD_ID, path);
 	}
 }
