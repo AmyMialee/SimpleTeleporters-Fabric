@@ -31,7 +31,7 @@ public record LocationComponent(Optional<GlobalPos> target) {
 
     public @Nullable Vec3d getPosition3D() {
         var position = this.getPosition();
-        if (position != null) return position.toCenterPos();
+        if (position != null) return position.toBottomCenterPos();
         return null;
     }
 

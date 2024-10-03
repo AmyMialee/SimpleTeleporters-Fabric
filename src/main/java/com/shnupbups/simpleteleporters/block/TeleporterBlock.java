@@ -86,7 +86,7 @@ public class TeleporterBlock extends BlockWithEntity {
 	public void onEntityCollision(BlockState state, @NotNull World world, BlockPos blockPos, Entity entity) {
 		if (!(world.getBlockEntity(blockPos) instanceof TeleporterBlockEntity teleporter) || teleporter.isCoolingDown() || !(entity instanceof ServerPlayerEntity player) || !entity.isSneaking()) return;
 		teleporter.setCooldown(20);
-		if (!teleporter.getStack(0).isEmpty()) {
+		if (teleporter.getStack(0).isEmpty()) {
 			player.sendMessage(Text.translatable("text.simpleteleporters.error.no_crystal").formatted(Formatting.RED), true);
 			return;
 		}

@@ -71,7 +71,7 @@ public class TeleporterBlockEntity extends BlockEntity implements Inventory {
 	}
 
 	public boolean isCoolingDown() {
-		return cooldown > 0;
+		return this.cooldown > 0;
 	}
 
 	public void setCooldown(int cooldown) {
@@ -98,6 +98,6 @@ public class TeleporterBlockEntity extends BlockEntity implements Inventory {
 	protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
 		super.writeNbt(nbt, registryLookup);
 		Inventories.writeNbt(nbt, this.inventory, registryLookup);
-		nbt.putInt("cooldown", cooldown);
+		nbt.putInt("cooldown", this.cooldown);
 	}
 }
